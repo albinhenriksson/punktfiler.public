@@ -1,0 +1,11 @@
+{
+    "colorscheme": "catppuccin-macchiato",
+    "savecursor": true,
+    "saveundo": true,
+    "/home/albin/.config/hypr/hyprland.conf": {
+        "filetype": "shell"
+    },
+    "/etc/fstab": {
+        "filetype": "shell"
+    },
+}

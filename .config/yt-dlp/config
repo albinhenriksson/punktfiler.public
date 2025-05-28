@@ -1,0 +1,133 @@
+#===============================================================================
+#           FIL:  ~/.config/yt-dlp/config
+#
+#   BESKRIVNING:  Konfiguration av yt-dlp.
+#
+#       SKAPARE:  Albin A. Henriksson
+#        SKAPAD:  2024-10-29
+#===============================================================================
+#shellcheck disable=SC2215
+
+## Meta ------------------------------------------------------------------------
+# Location of the ffmpeg binary; either the path to the binary or its containing directory.
+#--ffmpeg-location '/home/albin/bin/ffmpeg_build_by_yt-dlp/bin/'
+--color "always"
+
+#--netrc
+--cookies "/home/albin/.config/yt-dlp/cookies.txt"
+#--cookies-from-browser firefox
+
+#--ignore-errors
+#--no-cache-dir
+
+--yes-playlist
+
+## Nätverk ---------------------------------------------------------------------
+#--force-ipv4
+#--proxy socks5://10.64.0.1:1080
+--no-check-certificates          # Suppress HTTPS certificate validation.
+--geo-bypass
+--throttled-rate 100K
+
+-N 12                                 # Parallellisera n gånger med inbyggd nedladdare.
+#--downloader aria2c                  # Parallellisera med aria2.
+## -c, --continue true/false:         Continue downloading a partially downloaded file.
+## -j, --max-concurrent-downloads=N:  Maximum number of parallel downloads for every queue item (Default: 5).
+## -x, --max-connection-per-server=N: Maximum number of connections to one server for each download (Default: 1).
+## -s, --split=N:                     Download a file using N connections. If more than N URIs are given, first N URIs are used and remaining URIs are used for backup.
+##                                    If less than N URIs are given, those URIs are used more than once so that N connections total are made simultaneously.
+##                                    The number of connections to the same host is restricted by the --max-connection-per-server option (Default: 5).
+##  -k, --min-split-size=STORLEK:     aria2 does not split less than 2*SIZE byte range (Default: 20M).
+#--downloader-args '-c -j 16 -x 16 -s 16 -k 1M'
+
+## Format ----------------------------------------------------------------------
+--use-extractors "all"
+--extractor-args "youtube:player_client=all"
+
+#--no-video-multistreams
+#--no-audio-multistreams
+--audio-multistreams
+
+# Containers that may be used when merging formats, separated by "/", e.g. "mp4/mkv".
+# Ignored if no merge is required. (currently supported: avi, flv, mkv, mov, mp4, webm).
+--merge-output-format mkv
+
+#--remux-video mov
+#--recode-video mp4
+#-f "bv*+ba[acodec^=opus]/b" # (The opus part is to make sure you don't accidentally get an m4a audio, as then the recode might not happen).
+
+#-f "bestvideo[ext=mp4][vcodec!*=av01]+bestaudio[ext=m4a]/b[ext=mp4]"
+
+# Download the best video with either h264 or h265 codec,
+# or the best video if there is no such video
+#-f "(bv*[vcodec~='^((he|a)vc|h26[45])']+ba) / (bv*+ba/b)"
+
+
+# Download the best mp4 video available, or the best video if no mp4 available
+#-f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b"
+
+
+#-f "bv*[vcodec^=avc]+ba[ext=m4a]/b[ext=mp4]/b" / "bv*+ba[acodec^=opus]"
+
+# Download the best video with either h264 or h265 codec,
+# or the best video if there is no such video
+#-f "(bv*[vcodec~='^((he|a)vc|h26[45])']+ba) / (bv*+ba/b)"
+
+## Download the best video with either h264 or h265 codec,
+## or the best video if there is no such video
+## (The opus part is to make sure you don't accidentally get an m4a audio,
+## as then the recode might not happen).
+#-f "(bv*[vcodec~='^((he|a)vc|h26[45])']+ba) / (bv*+ba[acodec^=opus])"
+
+## [https://www.reddit.com/r/youtubedl/wiki/h264]
+#-f "bv*[vcodec^=avc]+ba[ext=m4a]/b[ext=mp4]/b"
+
+# download and merge only bestvideo and bestaudio. best is ignored since another format
+# containing a video stream (bestvideo) has already been selected.
+#-f bestvideo+best+bestaudio --no-video-multistreams
+
+# Download the best video with either h264 or h265 codec,
+# or the best video if there is no such video
+#-f "(bv*[vcodec~='^((he|a)vc|h26[45])']+ba) / (bv*+ba/b)"
+
+# Download the best mp4 video available, or the best video if no mp4 available
+#-f "bestvideo*[ext=mp4]+bestaudio[ext=m4a]/b[ext=mp4] / bv*+ba/b"
+
+# Download the best mp4 video and opus audio available, else best video.
+#-f "bestvideo*[ext=mp4]+bestaudio[acodec=opus]/b[ext=mp4] / bestvideo+best+bestaudio --no-video-multistreams"
+
+# You can change the criteria for being considered the best by using -S (--format-sort).
+# The general format for this is --format-sort field1,field2....
+#-S "proto:m3u8"
+#--format-sort-force
+
+#-f bestvideo*+bestaudio/best
+
+## Reklam ----------------------------------------------------------------------
+#--sponsorblock-remove sponsor
+
+## Undertexter -----------------------------------------------------------------
+#--all-subs                      # Betyder "--sub-langs all --write-subs".
+#--sub-format "srt"
+#--convert-subs "srt"
+#--write-auto-subs
+#--write-subs
+--sub-langs "en,sv,da,no,de,ja,sv-en,ja-en,en-orig,en.*"
+
+## Metadata --------------------------------------------------------------------
+--add-metadata
+--embed-metadata
+--embed-thumbnail
+--embed-subs
+--embed-chapters
+--embed-info-json
+--xattrs
+
+## Fil -------------------------------------------------------------------------
+--fixup force                 # Automatically correct known faults of the file.
+--continue                    # Resume partially downloaded files/fragments (default).
+--no-overwrites
+#--no-post-overwrites         # Do not overwrite post-processed files.
+#--no-mtime                   # Kopiera inte modifieringstiden.
+--restrict-filenames          # Enbart ASCII, inga "&" eller mellanslag.
+-o "%(uploader)s.%(upload_date)s.%(title)s.%(duration)ss.%(resolution)s.%(ext)s"

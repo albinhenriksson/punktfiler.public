@@ -1,0 +1,15 @@
+TIMING:            # valfritt – justera dubbel-tryck-timeout
+  TAP_MILLISEC: 200
+
+MAPPINGS:
+  - KEY: KEY_SPACE     # originalknappen
+
+    #  --- Välj EN av följande två varianter ---
+
+    # A) Ren remap (space blir alltid Ctrl, inga mellanslag):
+    TAP:  KEY_LEFTCTRL
+    HOLD: KEY_LEFTCTRL
+
+    # B) Dual-role (tap = space, hold = Ctrl):
+    # TAP:  KEY_SPACE
+    # HOLD: KEY_LEFTCTRL
