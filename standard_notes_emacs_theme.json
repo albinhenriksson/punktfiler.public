@@ -4,5 +4,5 @@
   "content_type": "SN|Theme",
   "area": "themes",
   "version": "1.0.0",
-  "url": "https://raw.githubusercontent.com/albinhenriksson/punktfiler.public/refs/heads/master/standard_notes_markdown_bash_och_fish_buffer.css"
+  "url": "https://cdn.jsdelivr.net/gh/albinhenriksson/punktfiler.public@master/standard_notes_markdown_bash_och_fish_buffer.css"
 }
