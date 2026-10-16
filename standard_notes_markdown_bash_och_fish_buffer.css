@@ -1,0 +1,250 @@
+/* ==========================================================================
+   Standard Notes - Emacs / Zenburn Terminal Buffer
+   Optimized for Markdown, Shell, Zsh & Fish
+   ========================================================================== */
+
+:root {
+  /* StyleKit-variabler */
+  --sn-stylekit-editor-font-family: 'Ubuntu Mono', 'UbuntuMono', monospace;
+  --sn-stylekit-monospace-font: 'Ubuntu Mono', 'UbuntuMono', monospace;
+  --sn-stylekit-font-size-editor: 15px;
+  --sn-stylekit-editor-font-size: 15px;
+
+  /* Zenburn färgpalett */
+  --sn-stylekit-background-color: #3f3f3f;
+  --sn-stylekit-foreground-color: #dcdccc;
+  --sn-stylekit-contrast-background-color: #2f2f2f;
+  --sn-stylekit-contrast-foreground-color: #ffffef;
+}
+
+/* --------------------------------------------------------------------------
+   1. TERMINALGEOMETRI & TYPOGRAFI (15px, line-height 1.0, Ubuntu Mono)
+   -------------------------------------------------------------------------- */
+*,
+*:before,
+*:after,
+html,
+body,
+.CodeMirror,
+.CodeMirror-lines,
+.cm-editor,
+.cm-content,
+.cm-line,
+.cm-gutters,
+.cm-gutter,
+.cm-gutterElement,
+.sn-editor,
+p,
+div,
+span,
+pre,
+code,
+textarea,
+input {
+  font-family: 'Ubuntu Mono', 'UbuntuMono', monospace !important;
+  font-size: 15px !important;
+  line-height: 1.0 !important;
+  letter-spacing: 0px !important;
+  font-variant-ligatures: none !important;
+  tab-size: 4 !important;
+}
+
+/* Global terminalbakgrund och förgrund */
+body,
+.CodeMirror,
+.cm-editor,
+.cm-content,
+.sn-editor {
+  background-color: #3f3f3f !important;
+  color: #dcdccc !important;
+}
+
+/* Nollställ alla marginaler för ren terminal-layout utan radluckor */
+.cm-line,
+p,
+h1, h2, h3, h4, h5, h6,
+blockquote,
+pre {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Markering & Cursorer */
+.CodeMirror-selected,
+.cm-selectionBackground,
+::selection {
+  background-color: #2e3330 !important;
+}
+
+.CodeMirror-cursor,
+.cm-cursor {
+  border-left: 2px solid #fe8019 !important;
+  background-color: #fe8019 !important;
+}
+
+/* Linjenummer / Gutters */
+.CodeMirror-gutters,
+.cm-gutters {
+  background-color: #2f2f2f !important;
+  border-right: 1px solid #1e1e1e !important;
+}
+
+.CodeMirror-linenumber,
+.cm-gutterElement {
+  color: #7f9f7f !important;
+  font-size: 15px !important;
+  line-height: 1.0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. MARKDOWN SYNTAX HIGHLIGHTING (Zenburn Palette)
+   -------------------------------------------------------------------------- */
+
+/* Markdown-formateringssymboler (#, *, _, >, -, `, [], (), ~~) */
+.cm-formatting,
+.cm-formatting-header,
+.cm-formatting-strong,
+.cm-formatting-em,
+.cm-formatting-quote,
+.cm-formatting-link,
+.cm-formatting-code,
+.cm-formatting-list,
+.tok-punctuation,
+.tok-contentMark,
+.tok-linkMark {
+  color: #8f8f8f !important;
+  font-weight: normal !important;
+}
+
+/* Rubriker H1 - H6 (Exakt 15px, 6 unika Zenburn-färger) */
+h1, .cm-header-1, .tok-heading1 { color: #f0dfaf !important; font-weight: bold !important; } /* H1: Guld */
+h2, .cm-header-2, .tok-heading2 { color: #8cd0d3 !important; font-weight: bold !important; } /* H2: Cyan */
+h3, .cm-header-3, .tok-heading3 { color: #7f9f7f !important; font-weight: bold !important; } /* H3: Grön */
+h4, .cm-header-4, .tok-heading4 { color: #dfaf87 !important; font-weight: bold !important; } /* H4: Persika */
+h5, .cm-header-5, .tok-heading5 { color: #dc8cc3 !important; font-weight: bold !important; } /* H5: Rosa */
+h6, .cm-header-6, .tok-heading6 { color: #94bff3 !important; font-weight: bold !important; } /* H6: Blå */
+
+.header, .title, .cm-header, .tok-heading {
+  font-size: 15px !important;
+  line-height: 1.0 !important;
+  margin: 0 !important;
+}
+
+/* Fetstil / Strong */
+strong, b, .cm-strong, .tok-strong {
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+/* Kursiv / Emphasis */
+em, i, .cm-em, .tok-emphasis {
+  color: #d0bf8f !important;
+  font-style: italic !important;
+}
+
+/* Genomstruken / Strikethrough */
+del, s, .cm-strikethrough, .tok-strikethrough {
+  color: #8f8f8f !important;
+  text-decoration: line-through !important;
+}
+
+/* Citat / Blockquotes */
+blockquote, .cm-quote, .tok-quote {
+  color: #7f9f7f !important;
+  font-style: italic !important;
+  background-color: #353535 !important;
+}
+
+/* Listor (Siffror och punkter) */
+.cm-variable-2, .cm-variable-3, .cm-list, .tok-list {
+  color: #dca3a3 !important;
+  font-weight: bold !important;
+}
+
+/* Inline-kod & Kodblock */
+code, pre, .cm-comment, .cm-code, .tok-monospace {
+  color: #c3bf8f !important;
+  background-color: #303030 !important;
+}
+
+/* Länknamn vs URL */
+.cm-link, .tok-link {
+  color: #94bff3 !important;
+  text-decoration: underline !important;
+}
+
+.cm-url, .tok-url {
+  color: #7cb8bb !important;
+  text-decoration: none !important;
+}
+
+/* Horisontell linje / HR */
+hr, .cm-hr {
+  color: #8f8f8f !important;
+  border: none !important;
+  border-top: 1px solid #505050 !important;
+}
+
+/* Taggar & YAML Frontmatter */
+.cm-tag, .tok-tagName {
+  color: #e3ce68 !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. SHELL / BASH / ZSH / FISH SPECIFIK HIGHLIGHTING (CM5 + CM6)
+   -------------------------------------------------------------------------- */
+
+/* Shebangs (#!/usr/bin/env fish etc) */
+.cm-meta, 
+.tok-meta,
+.cm-processing,
+.tok-processingInstruction {
+  color: #fe8019 !important;
+  font-weight: bold !important;
+}
+
+/* CLI-flaggor & options (-la, --verbose, -f) */
+.cm-option,
+.cm-attribute,
+.tok-attribute,
+.tok-propertyName {
+  color: #dfaf87 !important;
+}
+
+/* Skalvariabler ($PATH, $status, $1, $HOME, $USER) */
+.cm-def,
+.tok-variableName2,
+.tok-definition {
+  color: #fe8019 !important;
+  font-weight: bold !important;
+}
+
+/* Inbyggda kommandon / Builtins (set, echo, export, source, alias, bind) */
+.cm-builtin,
+.tok-builtin,
+.tok-standard {
+  color: #8cd0d3 !important;
+  font-weight: bold !important;
+}
+
+/* Operatorer, Pipes & Omdirigeringar (|, &&, ||, >, >>, 2>&1) */
+.cm-operator,
+.tok-operator,
+.tok-arithmeticSymbol,
+.tok-logicSymbol {
+  color: #f0dfaf !important;
+  font-weight: bold !important;
+}
+
+/* Sökvägar & Mappar (/usr/local/bin, ~/.config) */
+.cm-string-2,
+.tok-special {
+  color: #cc9393 !important;
+}
+
+/* Generella kod-tokens i skriptblok */
+.cm-keyword, .tok-keyword { color: #f0dfaf !important; font-weight: bold !important; }
+.cm-string, .tok-string { color: #cc9393 !important; }
+.cm-variable, .tok-variableName { color: #efef8f !important; }
+.cm-number, .tok-number, .tok-atom { color: #8cd0d3 !important; }
+
