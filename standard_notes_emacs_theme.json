@@ -1,0 +1,8 @@
+{
+  "identifier": "com.albin.emacs-zenburn-theme",
+  "name": "Emacs Zenburn Theme",
+  "content_type": "SN|Theme",
+  "area": "themes",
+  "version": "1.0.0",
+  "url": "https://raw.githubusercontent.com/albinhenriksson/punktfiler.public/refs/heads/master/standard_notes_markdown_bash_och_fish_buffer.css"
+}
